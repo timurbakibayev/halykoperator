@@ -44,9 +44,7 @@ public class HalykOperator extends Application {
                 }
             }
         };
-
         mAuth.addAuthStateListener(mAuthListener);
-
     }
 
 }
