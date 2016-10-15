@@ -13,6 +13,7 @@ public class User {
     public boolean loggedIn = true;
     public String action = "";
     public String currentTicketId = "";
+    public int waiting = 0;
     public boolean available = true;
 
     public String getFireId() {

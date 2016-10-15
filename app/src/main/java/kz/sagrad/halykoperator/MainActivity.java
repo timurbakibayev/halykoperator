@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void nextClient() {
         HalykOperator.ref.child("users").child(currentUser.fireId).child("action").setValue("NEXT");
-        nextClient.setEnabled(false);
+        //nextClient.setEnabled(false);
     }
 
     private void completeClient() {
@@ -121,9 +121,13 @@ public class MainActivity extends AppCompatActivity {
             HalykOperator.ref.child("users").child(currentUser.fireId).setValue(currentUser);
             currentUser = null;
             login.setText("Login");
+            nextClient.setEnabled(false);
+            completeClient.setEnabled(false);
+            serviceET.setEnabled(true);
         } else {
             String name = nameET.getText().toString();
             services = serviceET.getText().toString().replaceAll(" ", "").split(",");
+            serviceET.setEnabled(false);
             currentUser = new User();
             currentUser.name = name;
             currentUser.windowNo = windowET.getText().toString();
@@ -150,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
                             completeClient.setEnabled(true);
                         }
                     }
+                    if (changedUser.waiting != currentUser.waiting) {
+                        currentUser.waiting = changedUser.waiting;
+                        updateScreen();
+                    }
                 }
 
                 @Override
@@ -164,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateScreen() {
         currentTicketTV.setText("Текущий клиент: " + currentUser.currentTicketId);
+        waitingTV.setText("Ожидает клиентов: " + currentUser.waiting);
     }
 
     @Override
