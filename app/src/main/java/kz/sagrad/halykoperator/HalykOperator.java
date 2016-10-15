@@ -25,7 +25,7 @@ public class HalykOperator extends Application {
         Firebase.setAndroidContext(this);
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        ref = new Firebase("https://dqueue-4be01.firebaseio.com/");
+        ref = (new Firebase("https://dqueue-4be01.firebaseio.com/")).child("queue");
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
