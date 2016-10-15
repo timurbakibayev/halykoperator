@@ -19,17 +19,17 @@ public class Menu {
 
     public static void loadMenu() {
         HalykOperator.ref.child("menu").addValueEventListener(new ValueEventListener() {
-                          @Override
-                          public void onDataChange(DataSnapshot dataSnapshot) {
-                              menuMap = (Map<String,String>)dataSnapshot.getValue();
-                              constructArrayList();
-                          }
+                  @Override
+                  public void onDataChange(DataSnapshot dataSnapshot) {
+                      menuMap = (Map<String,String>)dataSnapshot.getValue();
+                      constructArrayList();
+                  }
 
-                          @Override
-                          public void onCancelled(FirebaseError firebaseError) {
+                  @Override
+                  public void onCancelled(FirebaseError firebaseError) {
 
-                          }
-                      });
+                  }
+              });
     }
 
     private static void constructArrayList() {
@@ -68,6 +68,7 @@ public class Menu {
         }
         Log.w(TAG, "constructArrayList: MENU READY");
         System.out.println("MENU READY");
+
     }
 
 }

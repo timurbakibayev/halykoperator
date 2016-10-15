@@ -47,4 +47,9 @@ public class HalykOperator extends Application {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    public static void savePref(String key, String value) {
+        SharedPreferences.Editor prefsEditor = sharedPref.edit();
+        prefsEditor.putString(key, value);
+        prefsEditor.commit();
+    }
 }
