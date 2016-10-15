@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "730102822894",
+    "firebase_url": "https://dqueue-4be01.firebaseio.com",
+    "project_id": "dqueue-4be01",
+    "storage_bucket": "dqueue-4be01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730102822894:android:dc7e8581df70a4ef",
+        "android_client_info": {
+          "package_name": "kz.sagrad.halykoperator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730102822894-sko759nb3kbmfmnf2nvu4o9lc0uiud0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbbdWZx-opbr6PQLBkR3NLBkotGhb_S20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
