@@ -88,6 +88,28 @@ public class MainActivity extends AppCompatActivity {
                 login();
             }
         });
+        nextClient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextClient();
+            }
+        });
+        completeClient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                completeClient();
+            }
+        });
+    }
+
+    private void nextClient() {
+        HalykOperator.ref.child("users").child(currentUser.fireId).child("action").setValue("NEXT");
+        nextClient.setEnabled(false);
+    }
+
+    private void completeClient() {
+        HalykOperator.ref.child("users").child(currentUser.fireId).child("action").setValue("READY");
+        completeClient.setEnabled(false);
     }
 
     ValueEventListener vel;
@@ -108,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
             currentUser.services = new ArrayList<String>(Arrays.asList(services));
             Firebase db_ref = HalykOperator.ref.child("users").push();
             currentUser.fireId = db_ref.getKey();
+            nextClient.setEnabled(true);
+            completeClient.setEnabled(false);
             db_ref.setValue(currentUser);
             Log.e(TAG, "login: id=" + db_ref.getKey());
             vel = new ValueEventListener() {
@@ -116,11 +140,14 @@ public class MainActivity extends AppCompatActivity {
                     User changedUser = dataSnapshot.getValue(User.class);
                     if (changedUser.currentTicketId != null &&
                             !changedUser.currentTicketId.equals(currentUser.currentTicketId)) {
-                        updateScreen();
                         currentUser.currentTicketId = changedUser.currentTicketId;
+                        updateScreen();
                         if (currentUser.currentTicketId.equals("")) {
                             nextClient.setEnabled(true);
-                            
+                            completeClient.setEnabled(false);
+                        } else {
+                            nextClient.setEnabled(false);
+                            completeClient.setEnabled(true);
                         }
                     }
                 }
